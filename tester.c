@@ -183,8 +183,8 @@ void usage(char* parameter)
   snprintf(output, sizeof(output),
         "Usage: %.110s backup|restore|ls pathname\n", parameter);
 
-  printf(output);
-  printf("0x%x\n", output);
+//  printf(output);
+//  printf("0x%x\n", output);
 }
 
 int main(int argc, char* argv[]) 
@@ -271,7 +271,8 @@ int main(int argc, char* argv[])
     if (stat(dst, &buf) == 0 && buf.st_uid != getuid()) {
       permissionsError = 1;
       strcpy(errorMsg, "Not your file: ");
-      strncpy(errorMsg+strlen(errorMsg), path, sizeof(errorMsg)-strlen(errorMsg));
+ //     strncpy(errorMsg+strlen(errorMsg), path, sizeof(errorMsg)-strlen(errorMsg));
+      strncat(errorMsg, path, sizeof(errorMsg)-strlen(errorMsg));
     }
   }
 
